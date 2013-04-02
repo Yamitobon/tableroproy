@@ -1,0 +1,38 @@
+<%- model_class = Member -%>
+<div class="page-header">
+  <h1>Integrantes del Equipo</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:Nombre) %></th>
+      <th><%= model_class.human_attribute_name(:Equipo) %></th>
+      <th><%= model_class.human_attribute_name(:creado_en) %></th>
+      <th><%=t '.acciones', :default => t("helpers.acciones") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.id, member_path(member) %></td>
+        <td><%= member.name %></td>
+        <td><%= member.team.name %></td>
+        <td><%=l member.created_at %></td>
+        <td>
+          <%= link_to t('.Editar', :default => t("helpers.links.editar")),
+                      edit_member_path(member), :class => 'btn btn-mini' %>
+          <%= link_to t('.Eliminar', :default => t("helpers.links.Eliminar")),
+                      member_path(member),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Esta Seguro?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.Nuevo Integrante del Equipo")),
+            new_member_path,
+            :class => 'btn btn-primary' %>

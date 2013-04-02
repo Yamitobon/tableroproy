@@ -1,0 +1,39 @@
+<%- model_class = Question -%>
+<div class="page-header">
+  <h1>Preguntas</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:Descripción) %></th>
+      <th><%= model_class.human_attribute_name(:Puntaje) %></th>
+      <th><%= model_class.human_attribute_name(:Letra) %></th>
+      <th><%= model_class.human_attribute_name(:Categoria) %></th>
+      <th><%=t '.acciones', :default => t("helpers.Acciones") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= link_to question.id, question_path(question) %></td>
+        <td><%= question.description %></td>
+        <td><%= question.score %></td>
+        <td><%= question.letter %></td>
+        <td><%= question.category.name %></td>
+        <td>
+          <%= link_to t('.Editar', :default => t("helpers.links.editar")),
+                      edit_question_path(question), :class => 'btn btn-mini' %>
+          <%= link_to t('.Eliminar', :default => t("helpers.links.Eliminar")),
+                      question_path(question),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Esta Seguro?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.Nueva Pregunta")),
+            new_question_path,
+            :class => 'btn btn-primary' %>

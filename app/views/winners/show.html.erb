@@ -1,0 +1,27 @@
+<%- model_class = Winner -%>
+<div class="page-header">
+  <h1>Ganadores</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:Nombre_del_Equipo) %>:</strong></dt>
+  <dd><%= @winner.nameteam %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:Miembro_del Equipo) %>:</strong></dt>
+  <dd><%= @mwinner.member %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:Puntaje) %>:</strong></dt>
+  <dd><%= @mwinner.score %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:Fecha_del_Juego) %>:</strong></dt>
+  <dd><%= @mwinner.dategame %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.atras', :default => t("helpers.links.Atras")),
+              winners_path, :class => 'btn'  %>
+  <%= link_to t('.editar', :default => t("helpers.links.editar")),
+              edit_winner_path(@winner), :class => 'btn' %>
+  <%= link_to t('.eliminar', :default => t("helpers.links.Eliminar")),
+              winner_path(@winner),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Esta Seguro?')) },
+              :class => 'btn btn-danger' %>
+</div>

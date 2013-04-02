@@ -1,0 +1,6 @@
+<h1>Editar respuesta</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'mostrar', @answer %> |
+<%= link_to 'atras', answers_path %>

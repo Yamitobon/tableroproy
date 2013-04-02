@@ -1,0 +1,29 @@
+<h1>Listing winners</h1>
+
+<table>
+  <tr>
+    <th>Nameteam</th>
+    <th>Namemember</th>
+    <th>Score</th>
+    <th>Dategame</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @winners.each do |winner| %>
+  <tr>
+    <td><%= winner.nameteam %></td>
+    <td><%= winner.namemember %></td>
+    <td><%= winner.score %></td>
+    <td><%= winner.dategame %></td>
+    <td><%= link_to 'Show', winner %></td>
+    <td><%= link_to 'Edit', edit_winner_path(winner) %></td>
+    <td><%= link_to 'Destroy', winner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Winner', new_winner_path %>

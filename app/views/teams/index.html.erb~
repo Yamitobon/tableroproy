@@ -1,0 +1,26 @@
+<%- model_class = Team -%>
+<div class="page-header">
+  <h1>equipos</h1>
+</div>
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+     <th><%= model_class.human_attribute_name(:puntaje) %></th>
+      <th><%=t '.actions', :default => t("helpers.acciones") %></th>
+    </tr>
+  </thead>
+  <tbody>
+     <%= render @teams %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= link_to 'Nuevo Equipo', new_team_path, :remote => true %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<%= link_to t('.nuevo', :default => t("helpers.links.nuevo")),
+            new_team_path,
+            :class => 'btn btn-primary' %>

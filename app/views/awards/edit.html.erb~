@@ -1,0 +1,7 @@
+<%- model_class = Award -%>
+<div class="page-header">
+  <h1>Editar premio</h1>
+</div>
+<%= render :partial => 'form' %>
+
+
